@@ -72,8 +72,7 @@ class NewYorkTimesApiService
             $query['fq'][] = 'news_desk:("' . $category . '")';
         }
 
-        
-        // Add source filter
+
         if (!empty($userSettings->source)) {
             $query['fq'][] = 'source:("' . $userSettings->source . '")';
         }
@@ -88,10 +87,7 @@ class NewYorkTimesApiService
                 'sort' => isset($userSettings) ? $userSettings->sort : null,
                 'fq' => implode('AND', $query['fq'])
             ]
-
         );
-
-        // return response()->json($query);
 
         if (isset($response['status']) && $response['status'] == 'OK') {
             $mappedResponse = array_map(function ($article) {

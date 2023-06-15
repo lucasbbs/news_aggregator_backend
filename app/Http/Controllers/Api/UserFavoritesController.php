@@ -21,11 +21,14 @@ class UserFavoritesController extends Controller
             ->where('user_favorites.user_id', auth()->id())
             ->delete();
 
-        UserFavorites::create([
-            'user_id' => auth()->id(),
-            'category_id' => $request->category_id,
-        ]);
-
+            
+        if (isset($request->category_id)) {
+            UserFavorites::create([
+                'user_id' => auth()->id(),
+                'category_id' => $request->category_id,
+            ]);
+        }
+        
         return response()->json([
             'message' => 'Settings saved successfully.',
         ]);

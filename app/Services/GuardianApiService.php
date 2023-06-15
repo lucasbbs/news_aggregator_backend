@@ -59,8 +59,6 @@ class GuardianApiService
             'page' => $page,
             'order-by' => $userSettings ? $userSettings->sort : $sort,
         ]);
-
-        // return response()->json($query);
         
         $response = $this->client->get("$this->api_url/search?$query");
         

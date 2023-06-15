@@ -30,7 +30,6 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('news')->group(function () {
-    Route::get('', [NewsController::class, 'index']);
     Route::get('latest', [LatestNewsController::class, 'index']);
     Route::get('nytimes', [NewsController::class, 'getNewYorkTimesNews']);
     Route::get('guardian',[NewsController::class, 'getTheGuardianNews']); 

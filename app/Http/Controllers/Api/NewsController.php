@@ -26,17 +26,6 @@ class NewsController extends Controller
         $this->nyTimes = $nyTimes;
         $this->guardian = $guardian;
     }
-    public function index(Request $request)
-    {
-        $timesNews = $this->nyTimes->getArticles($request->keyword, $request->begin_date, $request->end_date, $request->category, $request->source, $request->page, $request->sort, $request->search);
-        $guardianNews = $this->guardian->getArticles($request->keyword, $request->begin_date, $request->end_date, $request->category, $request->page, $request->sort, $request->search);
-        $newsApiNews = $this->newsApi->getArticles($request->keyword, $request->begin_date, $request->end_date, $request->page, $request->search);
-        return response()->json([
-            'NYT' => $timesNews,
-            'GUA' => $guardianNews,
-            'NEW' => $newsApiNews,
-        ]);
-    }
 
     public function getNewYorkTimesNews(Request $request)
     {
